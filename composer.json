@@ -1,0 +1,27 @@
+{
+    "name": "buggymanhq/buggyman-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgeny Shpilevsky",
+            "email": "evgeny@shpilevsky.com",
+            "role": "lead"
+        }
+    ],
+    "keywords": [
+        "zend",
+        "buggyman"
+    ],
+    "autoload": {
+        "psr-0": {
+            "Buggyman": "src/"
+        }
+    },
+    "require": {
+        "buggymanhq/buggyman": "1.*",
+        "zendframework/zend-mvc": "~2.2",
+        "zendframework/zend-view": "~2.2",
+        "zendframework/zend-modulemanager": "~2.2",
+        "zendframework/zend-servicemanager": "~2.2"
+    }
+}
