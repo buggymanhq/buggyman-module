@@ -48,7 +48,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
             $pluginManager = $serviceManager->get('ViewHelperManager');
             /** @var InlineScript $inline */
             $inline = $pluginManager->get('InlineScript');
-            $inline($inline::FILE, 'http://api.buggyman.io/js/buggyman.js?token=' . $options->getToken());
+            $inline($inline::FILE, 'http://api.buggyman.io/v1/js/' . $options->getToken() . '/collector.js');
         }
     }
 
