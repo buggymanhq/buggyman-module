@@ -6,6 +6,7 @@
 namespace BuggymanModule;
 
 
+use Buggyman\Buggyman;
 use Exception;
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
@@ -13,11 +14,9 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\Mvc\ApplicationInterface;
 use Zend\Mvc\MvcEvent;
-use Zend\Mvc\Service\ViewHelperManagerFactory;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\Helper\InlineScript;
 use Zend\View\HelperPluginManager;
-use Buggyman\Buggyman;
 
 class Module implements BootstrapListenerInterface, ConfigProviderInterface, ServiceProviderInterface
 {
@@ -70,7 +69,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
             'factories' => array(
                 'BuggymanOptions' => function (ServiceManager $sm) {
                     $config = $sm->get('Config');
-                    return new Options($config['buggyman']);
+                    return new Options(isset($config['buggyman']) ? $config['buggyman'] : []);
                 }
             )
         );
