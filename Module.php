@@ -1,3 +1,3 @@
 <?php
 
-require __DIR__ . "/src/Buggyman/Module.php";
+require __DIR__ . "/src/BuggymanModule/Module.php";
