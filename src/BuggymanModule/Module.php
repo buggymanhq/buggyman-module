@@ -44,7 +44,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
                 }
             );
 
-            if ($options->getPublicToken() && !$_SERVER['HTTPS']) {
+            if ($options->getPublicToken() && !isset($_SERVER['HTTPS'])) {
                 /** @var HelperPluginManager $pluginManager */
                 $pluginManager = $serviceManager->get('ViewHelperManager');
                 /** @var InlineScript $inline */
