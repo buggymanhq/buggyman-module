@@ -44,11 +44,13 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
                 }
             );
 
-            /** @var HelperPluginManager $pluginManager */
-            $pluginManager = $serviceManager->get('ViewHelperManager');
-            /** @var InlineScript $inline */
-            $inline = $pluginManager->get('InlineScript');
-            $inline($inline::FILE, 'http://cdn.buggyman.io/v1/js/' . $options->getToken() . '/collector.js');
+            if ($options->getPublicToken()) {
+                /** @var HelperPluginManager $pluginManager */
+                $pluginManager = $serviceManager->get('ViewHelperManager');
+                /** @var InlineScript $inline */
+                $inline = $pluginManager->get('InlineScript');
+                $inline($inline::FILE, 'http://cdn.buggyman.io/v1/js/' . $options->getPublicToken() . '/collector.js');
+            }
         }
     }
 

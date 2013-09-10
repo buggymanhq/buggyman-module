@@ -5,6 +5,8 @@ return array(
         // is enabled
         'enabled' => true,
         // api token
-        'token' => ''
+        'token' => '',
+        // public token
+        'public_token' => ''
     )
 );

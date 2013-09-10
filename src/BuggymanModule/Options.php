@@ -21,6 +21,11 @@ class Options extends AbstractOptions
     protected $token = '';
 
     /**
+     * @var string
+     */
+    protected $publicToken = '';
+
+    /**
      * @var int
      */
     protected $errorLevel;
@@ -93,6 +98,26 @@ class Options extends AbstractOptions
     public function getErrorLevel()
     {
         return $this->errorLevel;
+    }
+
+    /**
+     * Set value of PublicToken
+     *
+     * @param string $publicToken
+     */
+    public function setPublicToken($publicToken)
+    {
+        $this->publicToken = $publicToken;
+    }
+
+    /**
+     * Return value of PublicToken
+     *
+     * @return string
+     */
+    public function getPublicToken()
+    {
+        return $this->publicToken;
     }
 
 }
