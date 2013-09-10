@@ -31,7 +31,9 @@ return array(
         // is enabled
         'enabled' => true,
         // api token
-        'token' => 'HERE_PASTE_YOUR_TOKEN'
+        'token' => 'HERE_PASTE_YOUR_TOKEN',
+        // public token for js handler
+        'public_token' => 'HERE YOUR PUBLIC TOKEN'
     )
 );
 ```
