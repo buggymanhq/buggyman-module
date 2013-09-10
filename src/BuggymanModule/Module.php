@@ -33,6 +33,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
         if ($options->getEnabled() && $options->getToken()) {
             Buggyman::setToken($options->getToken());
             Buggyman::setErrorLevel($options->getErrorLevel());
+            Buggyman::setRoot(getcwd());
             Buggyman::init();
 
             $app->getEventManager()->attach(
