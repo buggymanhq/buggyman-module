@@ -37,7 +37,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
             Buggyman::init();
 
             $app->getEventManager()->attach(
-                [MvcEvent::EVENT_DISPATCH_ERROR],
+                [MvcEvent::EVENT_DISPATCH_ERROR, MvcEvent::EVENT_RENDER_ERROR],
                 function (MvcEvent $event) use ($serviceManager) {
                     if ($event->getParam('exception') instanceof Exception) {
                         Buggyman::reportException($event->getParam('exception'));
