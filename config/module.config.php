@@ -7,6 +7,10 @@ return array(
         // api token
         'token' => '',
         // public token
-        'public_token' => ''
+        'public_token' => '',
+        // error level
+        'error_level' => E_ALL | E_STRICT,
+        // async script
+        'async' => true
     )
 );

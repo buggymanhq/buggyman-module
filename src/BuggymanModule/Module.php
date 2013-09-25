@@ -45,12 +45,20 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Ser
                 }
             );
 
-            if ($options->getPublicToken() && !isset($_SERVER['HTTPS'])) {
+            if ($options->getPublicToken() && (!isset($_SERVER['HTTPS']) || !$_SERVER['HTTPS'])) {
                 /** @var HelperPluginManager $pluginManager */
                 $pluginManager = $serviceManager->get('ViewHelperManager');
                 /** @var InlineScript $inline */
                 $inline = $pluginManager->get('InlineScript');
-                $inline($inline::FILE, 'http://cdn.buggyman.io/v1/js/' . $options->getPublicToken() . '/collector.js');
+
+                if ($options->getAsync()) {
+                    $script = '(function(e,t,n,r){var i=e.createElement("script"),s=e.getElementsByTagName(n)[0];i.async=1;i.src=r;s.parentNode.insertBefore(i,s)})(document,window,"script","http://cdn.buggyman.io/v1/js/%s/collector.js")';
+                    $script = sprintf($script, $options->getPublicToken());
+                    $inline($inline::SCRIPT, $script);
+                } else {
+                    $url = 'http://cdn.buggyman.io/v1/js/' . $options->getPublicToken() . '/collector.js';
+                    $inline($inline::FILE, $url);
+                }
             }
         }
     }

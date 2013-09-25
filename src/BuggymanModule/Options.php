@@ -31,6 +31,13 @@ class Options extends AbstractOptions
     protected $errorLevel;
 
     /**
+     * Asynchronous JS
+     *
+     * @var bool
+     */
+    protected $async = true;
+
+    /**
      * @param null $options
      */
     public function __construct($options = null)
@@ -118,6 +125,26 @@ class Options extends AbstractOptions
     public function getPublicToken()
     {
         return $this->publicToken;
+    }
+
+    /**
+     * Set value of Async
+     *
+     * @param boolean $async
+     */
+    public function setAsync($async)
+    {
+        $this->async = $async;
+    }
+
+    /**
+     * Return value of Async
+     *
+     * @return boolean
+     */
+    public function getAsync()
+    {
+        return $this->async;
     }
 
 }
